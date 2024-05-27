@@ -1,0 +1,58 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.main-section {
+  border: 1px black solid;
+  height: 95%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.frame {
+  border: 1vw rgb(149, 146, 146) solid;
+  overflow: hidden;
+  position: relative;
+}
+
+.wide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photo {
+  min-width: 40vw;
+  /* stop it growing out of its container */
+  /* max-height: min-content; */
+}
+
+.arr-right {
+  position: absolute;
+  top: 30%;
+  z-index: 1;
+  border: 1px red solid;
+}
+
+.arr-right > img {
+  width: 50%;
+}
