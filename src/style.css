@@ -42,17 +42,31 @@ body {
 
 .photo {
   min-width: 40vw;
-  /* stop it growing out of its container */
-  /* max-height: min-content; */
+}
+
+.arr-right,
+.arr-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 42%;
+  z-index: 1;
+  height: 16%;
 }
 
 .arr-right {
-  position: absolute;
-  top: 30%;
-  z-index: 1;
-  border: 1px red solid;
+  right: 5px;
 }
 
-.arr-right > img {
-  width: 50%;
+.arr-left {
+  left: 5px;
+}
+
+.arr-right > img,
+.arr-left > img {
+  height: 100%;
+  cursor: pointer;
+  filter: invert(91%) sepia(100%) saturate(0%) hue-rotate(75deg)
+    brightness(104%) contrast(103%);
 }
