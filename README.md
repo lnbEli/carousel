@@ -1,4 +1,4 @@
-# Name
+# Carousel
 
 Run: npm install webpack webpack-cli --save-dev
 
