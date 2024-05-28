@@ -16,9 +16,10 @@ JavaScript:
 Manages the interactivity of the carousel, including navigation and resizing.
 Handles DOM manipulation to adjust the size of the carousel and to switch between images.
 Uses event listeners to handle user interactions (click events on arrows and dots, window resize events).
-Techniques Used
-Responsive Design:
 
+Techniques Used-
+
+Responsive Design:
 Ensures the carousel and images scale appropriately with the window size.
 Uses CSS properties like min-width, height, and overflow to handle resizing.
 DOM Manipulation:
