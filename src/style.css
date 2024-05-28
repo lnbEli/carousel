@@ -15,11 +15,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
+  background-color: rgb(243, 241, 240);
 }
 
 .main-section {
   border: 1px black solid;
+  border-radius: 5px;
   height: 95%;
   width: 95%;
   display: flex;
@@ -29,7 +30,8 @@ body {
 }
 
 .frame {
-  border: 1vw rgb(149, 146, 146) solid;
+  border: 0.5vw rgb(149, 146, 146) solid;
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
@@ -50,9 +52,9 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 42%;
+  top: 44%;
   z-index: 1;
-  height: 16%;
+  height: 12%;
 }
 
 .arr-right {
@@ -68,5 +70,41 @@ body {
   height: 100%;
   cursor: pointer;
   filter: invert(91%) sepia(100%) saturate(0%) hue-rotate(75deg)
-    brightness(104%) contrast(103%);
+    brightness(104%) contrast(103%) opacity(50%);
+}
+
+.arr-right > img:hover,
+.arr-left > img:hover {
+  filter: invert(91%) sepia(100%) saturate(0%) hue-rotate(75deg)
+    brightness(104%) contrast(103%) opacity(75%);
+}
+
+.nav-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 5%;
+  position: absolute;
+  bottom: 1%;
+  left: 40%;
+  z-index: 1;
+}
+
+.nav-dot {
+  height: 45%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(255, 255, 255, 0.5);
+  margin: 1.5%;
+}
+
+.nav-dot:hover {
+  background-color: rgb(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.nav-dot-selected {
+  background-color: rgb(255, 255, 255, 0.8);
 }
