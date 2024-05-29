@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", adjustFrameSizeAndPosition);
 
     // Start auto image change carousel
-    autoChangeImages();
+    autoChangeImages(5000);
   }
 
   // Add event listeners to buttons
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function autoChangeImages() {
+  function autoChangeImages(time) {
     const carouselImages = document.querySelectorAll(".photo");
     const numberOfCarouselImages = carouselImages.length;
     let counter = 1;
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         counter++;
       }
-    }, 5000);
+    }, time);
   }
 
   init();
