@@ -16,6 +16,8 @@ Event Handling:
 Listens for click events on the navigation arrows and dots.
 Listens for the resize event on the window to adjust the carousel size dynamically.
 
+The autoChangeImages function uses setInterval and the closure created around the counter to increment the function call.
+
 Summary:
 
 This application is an image carousel or slideshow. 
