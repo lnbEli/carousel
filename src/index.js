@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Adjust on window resize
     window.addEventListener("resize", adjustFrameSizeAndPosition);
+
+    // Start auto image change carousel
+    autoChangeImages();
   }
 
   // Add event listeners to buttons
@@ -19,15 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   navDots.forEach((element, index) => {
     element.addEventListener("click", () => {
-      setImage(index);
-      setClassSelected(index);
+      setImageAndClass(index);
     });
   });
 
   // Adjusts the frame size to match the image size
   function adjustFrameSizeAndPosition() {
     const frameDiv = document.querySelector(".frame");
-    const wideDiv = document.querySelector(".wide");
+    // const wideDiv = document.querySelector(".wide");
     const firstImage = document.querySelector(".imgOne");
     const selectedImage = document.querySelector(".selected");
     const selectedImageIndex = Number(selectedImage.dataset.index);
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Add selected class to image and navigation dots
-  function setClassSelected(imageNumber) {
+  function setClassSelected(index) {
     const images = document.querySelectorAll(".photo");
     const navDots = document.querySelectorAll(".nav-dot");
     images.forEach((element) => {
@@ -64,8 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
     navDots.forEach((element) => {
       element.classList.remove("nav-dot-selected");
     });
-    images[imageNumber].classList.add("selected");
-    navDots[imageNumber].classList.add("nav-dot-selected");
+    images[index].classList.add("selected");
+    navDots[index].classList.add("nav-dot-selected");
+  }
+
+  function setImageAndClass(index) {
+    setImage(index);
+    setClassSelected(index);
   }
 
   function moveCarouselRight() {
@@ -74,22 +81,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedImage = document.querySelector(".selected");
     const selectedImageIndex = Number(selectedImage.dataset.index);
     if (selectedImageIndex >= numberOfCarouselImages - 1) {
-      return;
+      setImageAndClass(0);
     } else {
-      setImage(selectedImageIndex + 1);
-      setClassSelected(selectedImageIndex + 1);
+      setImageAndClass(selectedImageIndex + 1);
     }
   }
 
   function moveCarouselLeft() {
+    const carouselImages = document.querySelectorAll(".photo");
+    const numberOfCarouselImages = carouselImages.length;
     const selectedImage = document.querySelector(".selected");
     const selectedImageIndex = Number(selectedImage.dataset.index);
     if (selectedImageIndex <= 0) {
-      return;
+      setImageAndClass(numberOfCarouselImages - 1);
     } else {
-      setImage(selectedImageIndex - 1);
-      setClassSelected(selectedImageIndex - 1);
+      setImageAndClass(selectedImageIndex - 1);
     }
+  }
+
+  function autoChangeImages() {
+    const carouselImages = document.querySelectorAll(".photo");
+    const numberOfCarouselImages = carouselImages.length;
+    let counter = 1;
+    setInterval(() => {
+      setImageAndClass(counter);
+      if (counter >= numberOfCarouselImages - 1) {
+        counter = 0;
+      } else {
+        counter++;
+      }
+    }, 5000);
   }
 
   init();

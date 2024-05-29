@@ -40,10 +40,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 1.2s ease-in-out;
 }
 
 .photo {
   min-width: 40vw;
+}
+
+.photo:not(.selected) {
+  opacity: 0.2;
 }
 
 .arr-right,
