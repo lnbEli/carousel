@@ -4,16 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const leftArrowButton = document.querySelector(".arr-left");
   const navDots = document.querySelectorAll(".nav-dot");
   const rightArrowButton = document.querySelector(".arr-right");
+  let interval;
 
   function init() {
     // Initial adjustment
-    adjustFrameSizeAndPosition();
+    window.addEventListener("load", () => {
+      adjustFrameSizeAndPosition();
+      autoChangeImages(5000);
+    });
 
     // Adjust on window resize
     window.addEventListener("resize", adjustFrameSizeAndPosition);
-
-    // Start auto image change carousel
-    autoChangeImages(5000);
   }
 
   // Add event listeners to buttons
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   navDots.forEach((element, index) => {
     element.addEventListener("click", () => {
       setImageAndClass(index);
+      autoChangeImages(5000, index);
     });
   });
 
@@ -82,8 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedImageIndex = Number(selectedImage.dataset.index);
     if (selectedImageIndex >= numberOfCarouselImages - 1) {
       setImageAndClass(0);
+      autoChangeImages(5000, 0);
     } else {
       setImageAndClass(selectedImageIndex + 1);
+      autoChangeImages(5000, selectedImageIndex + 1);
     }
   }
 
@@ -94,16 +98,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedImageIndex = Number(selectedImage.dataset.index);
     if (selectedImageIndex <= 0) {
       setImageAndClass(numberOfCarouselImages - 1);
+      autoChangeImages(5000, numberOfCarouselImages - 1);
     } else {
       setImageAndClass(selectedImageIndex - 1);
+      autoChangeImages(5000, selectedImageIndex - 1);
     }
   }
 
-  function autoChangeImages(time) {
+  function autoChangeImages(time, index = 0) {
     const carouselImages = document.querySelectorAll(".photo");
     const numberOfCarouselImages = carouselImages.length;
-    let counter = 1;
-    setInterval(() => {
+    let counter = index;
+    clearInterval(interval);
+    interval = setInterval(() => {
       setImageAndClass(counter);
       if (counter >= numberOfCarouselImages - 1) {
         counter = 0;
